@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <title>Unity Fitness</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    #food-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    #food-container img {
+      width: 400px;
+      height: 400px;
+      object-fit: cover;
+      margin: 10px;
+    }
+
+    #food-container .caption {
+      text-align: center;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+
+  </style>
+</head>
+
+<body>
+  <!-- navigation bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark " style="background-color: #ff0000;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">Unity Fitness</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a style="color: white;" class="nav-link" aria-current="page" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a style="color: white;" class="nav-link" href="gym.html">Training</a>
+        </li>
+          <li class="nav-item">
+            <a style="color: white;background-color:#a70000;" class="nav-link active" href="#">Healthy Food</a>
+          </li>
+          <li class="nav-item">
+            <a style="color: white;" class="nav-link" href="contact.html">Contact Us</a>
+          </li>
+          <li class="nav-item">
+            <a style="color: white;" class="nav-link" href="calories.html">Calories Calculator</a>
+        </li>
+        <li class="nav-item" >
+          <button type="button" class="btn btn-light" id="light-mode">Light</button>
+        </li>
+        <li class="nav-item">
+          <button type="button" class="btn btn-dark" id="dark-mode">Dark</button>
+        </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- end navigation bar -->
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="index.html" style="color: black;">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Healthy Food</li>
+    </ol>
+  </nav>
+  <h1 style="text-align: center; ">Healthy Foods</h1>
+  <!-- Cards -->
+
+  <div class="row" style="color: #a70000;">
+    <div id="food-container">
+
+    </div>
+  </div>
+  <!-- end Cards -->
+  <div style="margin-top: 5%;background-color: #ff0000; color: white;">
+    <!-- Footer -->
+    <footer style="  display: flex; justify-content: space-between; align-items: center;">
+      <p>&copy; 2023 Unity Fitness</p>
+     
+    </footer>
+    <!-- end Footer -->
+
+  </div>
+  <script>
+    // Load JSON data
+    fetch('js/food.json')
+      .then(response => response.json())
+      .then(data => {
+        // Get food container element
+        const foodContainer = document.getElementById('food-container');
+
+        // Loop through images in JSON data and create HTML elements
+        data.images.forEach(image => {
+          const img = document.createElement('img');
+          img.src = image.filename;
+          img.alt = image.alt;
+
+          
+
+          const figure = document.createElement('figure');
+          figure.appendChild(img);
+          
+
+          foodContainer.appendChild(figure);
+        });
+      });</script>
+  <script src="js/script.js"></script>
+ 
+
+  </div>
+</body>
